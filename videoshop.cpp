@@ -11,6 +11,7 @@ typedef struct t_Ops {
 	int CONTRAST = 0;
 	int BRIGHTNESS = 0;
 	int GRAYSCALE = 0;
+	int INVERT = 0;
 	int GAUSS = 0;
 	int CANNY = 0;
 	int SOBEL = 0;
@@ -86,6 +87,9 @@ int main(int argc, char** argv)
 				cvtColor(f_modified, f_modified, COLOR_BGR2GRAY);
 			// convert back to RGB to allow recording
 			cvtColor(f_modified, f_modified, COLOR_GRAY2RGB);
+		}
+		if (ops.INVERT != 0) {
+			f_modified.convertTo(f_modified, -1, -1.0, 255);
 		}
 		if (ops.GAUSS != 0) {
 			GaussianBlur(f_modified, f_modified, Size(ops.GAUSS, ops.GAUSS), 0);
@@ -200,6 +204,9 @@ void getOperation(int input_key) {
 	case 'Y':
 		ops.GRAYSCALE = !ops.GRAYSCALE;
 		break;
+	case 'T':
+		ops.INVERT = !ops.INVERT;
+		break;
 	case 'E':
 		ops.SOBEL = !ops.SOBEL;
 		break;
@@ -233,6 +240,7 @@ void printMenu()
 	std::cout << "C - Adjust contrast\n";
 	std::cout << "B - Adjust brightness\n";
 	std::cout << "Y - Grayscale\n";
+	std::cout << "T - Grayscale\n";
 	std::cout << "H - Mirror horizontally\n";
 	std::cout << "V - Mirror vertically\n";
 	std::cout << "G - Apply Gaussian blur\n";
