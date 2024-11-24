@@ -240,7 +240,7 @@ void printMenu()
 	std::cout << "C - Adjust contrast\n";
 	std::cout << "B - Adjust brightness\n";
 	std::cout << "Y - Grayscale\n";
-	std::cout << "T - Grayscale\n";
+	std::cout << "T - Invert\n";
 	std::cout << "H - Mirror horizontally\n";
 	std::cout << "V - Mirror vertically\n";
 	std::cout << "G - Apply Gaussian blur\n";
